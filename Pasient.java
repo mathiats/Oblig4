@@ -15,6 +15,6 @@ class Pasient{
   }
 
   public Resept hentUt(){
-    return liste.taAv();
+    return liste;
   }
 }
