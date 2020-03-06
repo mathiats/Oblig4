@@ -14,7 +14,7 @@ class Pasient{
     liste.leggPaa(resept);
   }
 
-  public Resept hentUt(){
+  public Stabel<Resept> hentUt(){
     return liste;
   }
 }
