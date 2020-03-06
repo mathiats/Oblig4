@@ -7,16 +7,8 @@ class Lege implements Comparable<Lege> {
     navn = navnP;
   }
 
-  public void hent(){
-    try{
-    for (int i = 0; i < utskrevedeResepter.stoerrelse();i++){
-      utskrevedeResepter.hent(i);
-      }
-    } catch(Exception e){
-    System.out.println("Ingen utskrevende resepter. ");
-    }
-
-
+  public Lenkeliste<Resept> utskrevedeListe(){
+    return utskrevedeResepter;
   }
 
 
@@ -31,7 +23,7 @@ class Lege implements Comparable<Lege> {
 
 
   public int compareTo(Lege annen){
-    return navn.compareTo(annen.navn);
+    return navn.compareTo(annen.hentNavn();
   }
 
   public HvitResept skrivHvitResept(Legemiddel legemiddel, Pasient pasientID, int reit) throws UlovligUtskrift{
