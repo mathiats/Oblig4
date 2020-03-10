@@ -22,7 +22,7 @@ class Legesystem{
                     pasientListe.leggTil(pasient);
                     fil.nextLine;
                 }
-                if biter[0].contains("Legemidler"){
+                if biter[0].contains("Lege"){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                 String navn = biter[0];
