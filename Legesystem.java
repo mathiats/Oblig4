@@ -13,6 +13,7 @@ class Legesystem{
         while(fil.hasNextLine()){
          String linje = fil.
             String[] biter= fil.split(",");
+            
             if biter[0].contains("Pasient"){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
@@ -22,14 +23,21 @@ class Legesystem{
                     pasientListe.leggTil(pasient);
                     fil.nextLine;
                 }
+                
                 if biter[0].contains("Lege"){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                 String navn = biter[0];
                 String kontrlID = biter[1];
+                if (kontrlID==0){
                 Lege lege = new Lege(navn, kontrlID);
                 legeliste.leggTil(lege);
                 fil.nextLine;
+                }else{
+                Lege spesialist = new Spesialist(navn, kontrlID);
+                legeliste.leggTil(spesialist);
+                fil.nextLine;
+                }
                 }
 
                 if biter[0].contains("Legemidler"){
