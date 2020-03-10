@@ -1,3 +1,6 @@
+import java.io.File
+import java.util.Scanner
+
 class Legesystem{
   private SortertLenkeliste<Lege> legeListe;
   private Lenkeliste<Resept> reseptListe;
@@ -7,8 +10,6 @@ class Legesystem{
   public void lesFraFil(String filnavn){
         File fil = new File(filnavn);
         Scanner scanner = new Scanner(fil);
-        
-        
         while(fil.hasNextLine()){
          String linje = fil.
             String[] biter= fil.split(",");
@@ -21,11 +22,28 @@ class Legesystem{
                     pasientListe.leggTil(pasient);
                     fil.nextLine;
                 }
-                if biter[0].contains("Pasient"){
+                if biter[0].contains("Legemidler"){
                 fil.nextLine;
+                while(!(biter[0].contains("#")){
+                String navn = biter[0];
+                String kontrlID = biter[1];
+                Lege lege = new Lege(navn, kontrlID);
+                legeliste.leggTil(lege);
+                fil.nextLine;
+                }
 
-                if biter[0].contains("Pasient"){
+                if biter[0].contains("Legemidler"){
                 fil.nextLine;
+                while(!(biter[0].contains("#")){
+                String navn = biter[0];
+                String type = biter[1];
+                String pris = biter[2];
+                String virkestoff = biter[3];
+                if(type=="narkotisk" || type=="vanedannende{
+                String styrke== biter[4];
+                //wtf
+                }
+                
 
  }
 
