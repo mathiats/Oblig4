@@ -5,6 +5,11 @@ class Legesystem{
   private Lenkeliste<Pasient> pasientListe;
 
   public void lesFraFil(String filnavn){
+        File fil = new File(filnavn);
+        Scanner scanner = new Scanner(fil);
+        
+        
+        while(fil.hasNextLine()){
          String linje = fil.
             String[] biter= fil.split(",");
             if biter[0].contains("Pasient"){
