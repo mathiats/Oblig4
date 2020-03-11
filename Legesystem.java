@@ -46,10 +46,10 @@ class Legesystem {
                 while(!(biter[0].contains("#")){
                 String navn = biter[0];
                 String type = biter[1];
-                String pris = biter[2];
-                String virkestoff = biter[3];
+                double pris = Double.parseDouble(biter[2]);
+                double virkestoff = Double.parseDouble(biter[3]);
                 if(type=="narkotisk" || type=="vanedannende"){
-                  int styrke=Integer.parseInt(biter[4]);
+                  double styrke=Double.parseDouble(biter[4]);
                   
                 
                 if (type==narkotisk){
