@@ -48,9 +48,13 @@ class Legesystem{
                 String pris = biter[2];
                 String virkestoff = biter[3];
                 if(type=="narkotisk" || type=="vanedannende{
-                String styrke== biter[4];
-                //wtf
+                  String styrke== biter[4];
+                  Integer.parsInt(styrke)
+                
+                if (type==narkotisk){
+                   
                 }
+                
                 
 
  }
