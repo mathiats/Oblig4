@@ -23,7 +23,7 @@ class Lege implements Comparable<Lege> {
 
 
   public int compareTo(Lege annen){
-    return navn.compareTo(annen.hentNavn();
+    return navn.compareTo(annen.hentNavn());
   }
 
   public HvitResept skrivHvitResept(Legemiddel legemiddel, Pasient pasientID, int reit) throws UlovligUtskrift{
