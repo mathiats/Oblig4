@@ -56,7 +56,7 @@ class Legesystem {
                     Legemidel nar = new Narkotisk(navn,pris,virkestoff,styrke);
                     legemidelListe.leggTil(nar);
                     fil.nextLine;
-                }else{
+                }else if (type==vanedannende){ 
                     Legemidel vanedannende = new Vanedannende(navn,pris,virkestoff,styrke);
                     legemidelListe.leggTil(vanedannende);
                     fil.nextLine;
