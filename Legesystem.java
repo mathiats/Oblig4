@@ -52,15 +52,15 @@ class Legesystem {
                   double styrke=Double.parseDouble(biter[4]);
                   
                 
-                if (type==narkotisk){
-                    Legemidel nar = new Narkotisk(navn,pris,virkestoff,styrke);
-                    legemidelListe.leggTil(nar);
-                    fil.nextLine;
-                }else
-                    Legemidel vanedannende = new Vanedannende(navn,pris,virkestoff,styrke);
-                    legemidelListe.leggTil(vanedannende);
-                    fil.nextLine;
-                }
+                    if (type==narkotisk){
+                        Legemidel nar = new Narkotisk(navn,pris,virkestoff,styrke);
+                        legemidelListe.leggTil(nar);
+                        fil.nextLine;
+                    }else
+                        Legemidel vanedannende = new Vanedannende(navn,pris,virkestoff,styrke);
+                        legemidelListe.leggTil(vanedannende);
+                        fil.nextLine;
+                    }
                 }else{
                     Legmidel vanlig = new Vanlig(navn,pris,virkestoff);
                     legemidelListe.leggTil(vanlig);
