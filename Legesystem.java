@@ -13,7 +13,7 @@ class Legesystem {
         while(fil.hasNextLine()){
             String biter[]= fil.split(",");
             
-            if biter[0].contains("Pasient"){
+            if (biter[0].contains("Pasient")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                     String navn = biter[0];
@@ -24,7 +24,7 @@ class Legesystem {
                 }
                 }
                 
-                if biter[0].contains("Lege"){
+                if ((biter[0].contains("Lege")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                 String navn = biter[0];
@@ -41,7 +41,7 @@ class Legesystem {
                 }
                 }
 
-                if biter[0].contains("Legemidler"){
+                if (biter[0].contains("Legemidler")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                 String navn = biter[0];
