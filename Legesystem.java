@@ -7,10 +7,16 @@ class Legesystem {
     private Lenkeliste<Legemiddel> legemidelListe;
   private Lenkeliste<Pasient> pasientListe;
 
-  public void lesFraFil(String filnavn){
-        File fil = new File(filnavn);
-        Scanner scanner = new Scanner(fil);
-        while(fil.hasNextLine()){
+ private static void lesFraFil(File fil){
+        Scanner scanner = null;
+        try{
+            scanner = new Scanner(fil);
+        }catch(FileNotFoundException e){
+            System.out.println("Fant ikke filen");
+            return;
+        }
+        String fil = scanner.nexLine()
+        while(scanner.hasNextLine()){
             String biter[]= fil.split(",");
             
             if (biter[0].contains("Pasient")){
@@ -24,7 +30,7 @@ class Legesystem {
                 }
                 }
                 
-                if ((biter[0].contains("Lege")){
+            else if ((biter[0].contains("Lege")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                     String navn = biter[0];
@@ -41,7 +47,7 @@ class Legesystem {
                 }
                 }
 
-                if (biter[0].contains("Legemidler")){
+                else if (biter[0].contains("Legemidler")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
                     String navn = biter[0];
