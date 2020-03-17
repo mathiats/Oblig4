@@ -17,4 +17,7 @@ class Pasient{
   public Stabel<Resept> hentUt(){
     return pasResept;
   }
+  public int hentId(){
+    return unikID;
+  }
 }
