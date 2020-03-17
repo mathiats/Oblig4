@@ -4,85 +4,85 @@ import java.util.*;
 class Legesystem {
     private SortertLenkeliste<Lege> legeListe;
     private Lenkeliste<Resept> reseptListe;
-    private Lenkeliste<Legemiddel> legemidelListe;
+    private Lenkeliste<Legemiddel> legemiddelListe;
   private Lenkeliste<Pasient> pasientListe;
 
- private static void lesFraFil(File fil){
+ private static void lesFraFil(File scanner){
         Scanner scanner = null;
         try{
-            scanner = new Scanner(fil);
+            scanner = new Scanner scanner);
         }catch(FileNotFoundException e){
             System.out.println("Fant ikke filen");
             return;
         }
-        String fil = scanner.nexLine();
+        String fil= scanner.nexLine();
         while(scanner.hasNextLine()){
             String biter[]= fil.split(",");
 
             if (biter[0].contains("Pasient")){
-                fil.nextLine();
+               scanner.nextLine();
                 while(!(biter[0].contains("#"))){
                     String navn = biter[0];
                     String fnr = biter[1];
                     Pasient pasient= new Pasient(navn,fnr);
                     pasientListe.leggTil(pasient);
-                    fil.nextLine();
+                   scanner.nextLine();
                 }
                 }
 
             else if ((biter[0].contains("Lege"))){
-                fil.nextLine();
+               scanner.nextLine();
                 while(!(biter[0].contains("#"))){
                     String navn = biter[0];
-                    String kontrlID = biter[1];
+                    int kontrlID = Integer.parseInt(biter[1]);
                 if (kontrlID==0){
-                    Lege lege = new Lege(navn, kontrlID);
-                    legeliste.leggTil(lege);
-                    fil.nextLine();
+                    Lege lege = new Lege(navn);
+                    legeListe.leggTil(lege);
+                   scanner.nextLine();
                 } else{
                     Lege spesialist = new Spesialist(navn, kontrlID);
-                    legeliste.leggTil(spesialist);
-                    fil.nextLine();
+                    legeListe.leggTil(spesialist);
+                    scanner.nextLine();
                 }
                 }
                 }
 
                 else if (biter[0].contains("Legemidler")){
-                fil.nextLine();
+               scanner.nextLine();
                 while(!(biter[0].contains("#"))){
                     String navn = biter[0];
                     String type = biter[1];
                     double pris = Double.parseDouble(biter[2]);
                     double virkestoff = Double.parseDouble(biter[3]);
                 if(type=="narkotisk" || type=="vanedannende"){
-                  double styrke=Double.parseDouble(biter[4]);
+                  int styrke=Integer.parseInt(biter[4]);
 
 
                     if (type=="narkotisk"){
                         Legemiddel nar = new Narkotisk(navn,pris,virkestoff,styrke);
                         legemidelListe.leggTil(nar);
-                        fil.nextLine();
+                       scanner.nextLine();
                     }else
                         Legemiddel vanedannende = new Vanedannende(navn,pris,virkestoff,styrke);
                         legemidelListe.leggTil(vanedannende);
-                        fil.nextLine();
+                       scanner.nextLine();
                     }
                 }else{
                     Legemiddel vanlig = new Vanlig(navn,pris,virkestoff);
                     legemidelListe.leggTil(vanlig);
-                    fil.nextLine();
+                   scanner.nextLine();
                 }
                 }
 
-            }
-            else if ((biter[0].contains("Resept"))){
-                fil.nextLine();
+            
+            else if (!(biter[0].contains("#"))){
+               scanner.nextLine();
                 while(scanner.hasNextLine()){
-                int legemnr = Integer.parseInt(biter[0];)
+                int legemnr = Integer.parseInt(biter[0]);
                 String legenavn = biter[1];
                 int pasID = Integer.parseInt(biter[2]);
                 String type = biter[3];
-                Legemiddel legemidel = finnLegemidel(legemnr);
+                Legemiddel legemiddel = finnlegemiddel(legemnr);
                 Lege lege = finnLege(legenavn);
                 Pasient pasient = hentPasient(pasID);
                 if (type!="p"){
@@ -106,10 +106,12 @@ class Legesystem {
                   }
                 }
               }
+            }
+          }
 
-        public Legemiddel finnLegemidel(int legemnr){
+        public Legemiddel finnlegemiddel(int legemnr){
             int teller = 0;
-            for(Legemiddel l: legemidelListe){
+            for(Legemiddel l: legemiddelListe){
                 if (teller == legemnr){
                   return l;
                 }else teller++;
@@ -130,5 +132,5 @@ class Legesystem {
           }
         }
 
-    }
+    
 }
