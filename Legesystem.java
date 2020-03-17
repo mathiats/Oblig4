@@ -58,7 +58,7 @@ class Legesystem {
                   double styrke=Double.parseDouble(biter[4]);
                   
                 
-                    if (type==narkotisk){
+                    if (type=="narkotisk"){
                         Legemidel nar = new Narkotisk(navn,pris,virkestoff,styrke);
                         legemidelListe.leggTil(nar);
                         fil.nextLine;
@@ -75,5 +75,19 @@ class Legesystem {
                 }
                 }
             }
+            else if ((biter[0].contains("Resept")){
+                fil.nextLine;
+                while(scanner.hasNextLine()){
+                int legemnr = Integer.parseInt(biter[0];)
+                String lege = biter[1];
+                int pasID = Integer.parseInt(biter[2]);
+                String type = biter[3];
+                }
+                if (type!="p"){
+                    int reit = Integer.parseInt(biter[4]);
+                    while(
+                }
+                
+                      
     }
 }
