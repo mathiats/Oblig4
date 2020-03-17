@@ -79,15 +79,56 @@ class Legesystem {
                 fil.nextLine;
                 while(scanner.hasNextLine()){
                 int legemnr = Integer.parseInt(biter[0];)
-                String lege = biter[1];
+                String legenavn = biter[1];
                 int pasID = Integer.parseInt(biter[2]);
                 String type = biter[3];
-                }
+                Legemidel legemidel = finnLegemidel(legemnr);
+                Lege lege = finnLege(legenavn);
+                Pasient pasient = hentPasient(pasID);
                 if (type!="p"){
                     int reit = Integer.parseInt(biter[4]);
-                    while(
+                    if(type=="hvit"){
+                      Resept resept = lege.skrivHvitResept(legmidel, pasient, reit);
+                      reseptListe.leggTil(resept);
+                    }
+                    if(type=="blaa"){
+                      Resept resept = lege.skrivBlaaResept(legmidel, pasient, reit);
+                      reseptListe.leggTil(resept);
+                    }
+                    if(type=="militaer"){
+                      Resept resept = lege.skrivMilitaerResept(legmidel, pasient, reit);
+                      reseptListe.leggTil(resept);
+                    }
+                  }else{
+                    Resept resept = lege.skrivPResept(legmidel, pasient);
+                    reseptListe.leggTil(resept);
+                    
+                  }
                 }
-                
+              }
+
+        public Legemidel finnLegemidel(int legemnr){
+            int teller = 0;
+            for(Legemiddel l: legemidelListe){
+                if (teller == legemnr){
+                  return l;
+                }else teller++;
+          }
+        }
+        public Lege finnLege(String legenavn){
+          for(Lege l: legeListe){
+            if (l.hentNavn().compareTo(legenavn)==0){
+              return l;
+            }
+          }
+        }
+        public Pasient hentPasient(int pasID){
+          for(Pasient p: pasientListe){
+            if (p.hentID().compareTo(pasID)==0){
+              return p;
+            }
+          }
+        }
                       
     }
 }
