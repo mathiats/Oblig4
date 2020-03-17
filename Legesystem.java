@@ -27,16 +27,16 @@ class Legesystem {
                 if ((biter[0].contains("Lege")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
-                String navn = biter[0];
-                String kontrlID = biter[1];
+                    String navn = biter[0];
+                    String kontrlID = biter[1];
                 if (kontrlID==0){
-                Lege lege = new Lege(navn, kontrlID);
-                legeliste.leggTil(lege);
-                fil.nextLine;
+                    Lege lege = new Lege(navn, kontrlID);
+                    legeliste.leggTil(lege);
+                    fil.nextLine;
                 }else{
-                Lege spesialist = new Spesialist(navn, kontrlID);
-                legeliste.leggTil(spesialist);
-                fil.nextLine;
+                    Lege spesialist = new Spesialist(navn, kontrlID);
+                    legeliste.leggTil(spesialist);
+                    fil.nextLine;
                 }
                 }
                 }
@@ -44,10 +44,10 @@ class Legesystem {
                 if (biter[0].contains("Legemidler")){
                 fil.nextLine;
                 while(!(biter[0].contains("#")){
-                String navn = biter[0];
-                String type = biter[1];
-                double pris = Double.parseDouble(biter[2]);
-                double virkestoff = Double.parseDouble(biter[3]);
+                    String navn = biter[0];
+                    String type = biter[1];
+                    double pris = Double.parseDouble(biter[2]);
+                    double virkestoff = Double.parseDouble(biter[3]);
                 if(type=="narkotisk" || type=="vanedannende"){
                   double styrke=Double.parseDouble(biter[4]);
                   
