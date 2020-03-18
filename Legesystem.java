@@ -5,19 +5,19 @@ class Legesystem {
     private SortertLenkeliste<Lege> legeListe;
     private Lenkeliste<Resept> reseptListe;
     private Lenkeliste<Legemiddel> legemiddelListe;
-  private Lenkeliste<Pasient> pasientListe;
+    private Lenkeliste<Pasient> pasientListe;
 
- private static void lesFraFil(File scanner){
+ private static void lesFraFil(File fil){
         Scanner scanner = null;
         try{
-            scanner = new Scanner(scanner);
+            scanner = new Scanner(fil);
         }catch(FileNotFoundException e){
             System.out.println("Fant ikke filen");
             return;
         }
-        String fil= scanner.nexLine();
+        String linje= scanner.nextLine();
         while(scanner.hasNextLine()){
-            String biter[]= fil.split(",");
+            String biter[]= linje.split(",");
 
             if (biter[0].contains("Pasient")){
                scanner.nextLine();
@@ -56,26 +56,24 @@ class Legesystem {
                     double virkestoff = Double.parseDouble(biter[3]);
                 if(type=="narkotisk" || type=="vanedannende"){
                   int styrke=Integer.parseInt(biter[4]);
-
-
                     if (type=="narkotisk"){
                         Legemiddel nar = new Narkotisk(navn,pris,virkestoff,styrke);
                         legemidelListe.leggTil(nar);
                        scanner.nextLine();
-                    }else
+                    }else{
                         Legemiddel van= new Vanedannende(navn,pris,virkestoff,styrke);
                         legemidelListe.leggTil(van);
                        scanner.nextLine();
                     }
-                }else{
+                  }
+                else{
                     Legemiddel vanlig = new Vanlig(navn,pris,virkestoff);
                     legemidelListe.leggTil(vanlig);
                    scanner.nextLine();
                 }
                 }
-
-            
-            else if (!(biter[0].contains("#"))){
+              }  
+            else if (biter[0].contains("Resept")){
                scanner.nextLine();
                 while(scanner.hasNextLine()){
                 int legemnr = Integer.parseInt(biter[0]);
@@ -88,19 +86,19 @@ class Legesystem {
                 if (type!="p"){
                     int reit = Integer.parseInt(biter[4]);
                     if(type=="hvit"){
-                      Resept resept = lege.skrivHvitResept(legmidel, pasient, reit);
+                      Resept resept = lege.skrivHvitResept(legemiddel, pasient, reit);
                       reseptListe.leggTil(resept);
                     }
                     else if(type=="blaa"){
-                      Resept resept = lege.skrivBlaaResept(legmidel, pasient, reit);
+                      Resept resept = lege.skrivBlaaResept(legemiddel, pasient, reit);
                       reseptListe.leggTil(resept);
                     }
                     else if(type=="militaer"){
-                      Resept resept = lege.skrivMilitaerResept(legmidel, pasient, reit);
+                      Resept resept = lege.skrivMilitaerResept(legemiddel, pasient, reit);
                       reseptListe.leggTil(resept);
                     }
                   }else{
-                    Resept resept = lege.skrivPResept(legmidel, pasient);
+                    Resept resept = lege.skrivPResept(legemiddel, pasient);
                     reseptListe.leggTil(resept);
 
                   }
@@ -109,7 +107,7 @@ class Legesystem {
             }
           }
 
-        public Legemiddel finnlegemiddel(int legemnr){
+            public Legemiddel finnlegemiddel(int legemnr){
             int teller = 0;
             for(Legemiddel l: legemiddelListe){
                 if (teller == legemnr){
@@ -126,12 +124,10 @@ class Legesystem {
         }
         public Pasient hentPasient(int pasID){
           for(Pasient p: pasientListe){
-            if (p.hentID().compareTo(pasID)==0){
+            if (p.hentID()==pasID){
               return p;
             }
           }
         }
 
-    
 }
-
