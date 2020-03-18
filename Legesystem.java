@@ -74,7 +74,7 @@ class Legesystem {
                 }
               }
             else if (biter[0].contains("Resept")){
-               scanner.nextLine().split(",");;
+               scanner.nextLine().split(",");
                 while(!(biter[0].contains("#")))
                 int legemnr = Integer.parseInt(biter[0]);
                 String legenavn = biter[1];
