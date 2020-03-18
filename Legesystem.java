@@ -10,7 +10,7 @@ class Legesystem {
  private static void lesFraFil(File scanner){
         Scanner scanner = null;
         try{
-            scanner = new Scanner scanner);
+            scanner = new Scanner(scanner);
         }catch(FileNotFoundException e){
             System.out.println("Fant ikke filen");
             return;
@@ -63,8 +63,8 @@ class Legesystem {
                         legemidelListe.leggTil(nar);
                        scanner.nextLine();
                     }else
-                        Legemiddel vanedannende = new Vanedannende(navn,pris,virkestoff,styrke);
-                        legemidelListe.leggTil(vanedannende);
+                        Legemiddel van= new Vanedannende(navn,pris,virkestoff,styrke);
+                        legemidelListe.leggTil(van);
                        scanner.nextLine();
                     }
                 }else{
@@ -134,3 +134,4 @@ class Legesystem {
 
     
 }
+
