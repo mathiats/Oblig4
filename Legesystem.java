@@ -2,12 +2,12 @@ import java.io.*;
 import java.util.*;
 
 class Legesystem {
-    private SortertLenkeliste<Lege> legeListe;
-    private Lenkeliste<Resept> reseptListe;
-    private Lenkeliste<Legemiddel> legemiddelListe;
-    private Lenkeliste<Pasient> pasientListe;
+    private static SortertLenkeliste<Lege> legeListe;
+    private static  Lenkeliste<Resept> reseptListe;
+    private static Lenkeliste<Legemiddel> legemiddelListe;
+    private static Lenkeliste<Pasient> pasientListe;
 
- private static void lesFraFil(File fil){
+ public static void lesFraFil(File fil){
         Scanner scanner = null;
         try{
             scanner = new Scanner(fil);
@@ -15,40 +15,40 @@ class Legesystem {
             System.out.println("Fant ikke filen");
             return;
         }
-        String linje= scanner.nextLine();
+        String linje= scanner;
         while(scanner.hasNextLine()){
             String biter[]= linje.split(",");
 
             if (biter[0].contains("Pasient")){
-               scanner.nextLine();
+               scanner.nextLine().split(",");;
                 while(!(biter[0].contains("#"))){
                     String navn = biter[0];
                     String fnr = biter[1];
                     Pasient pasient= new Pasient(navn,fnr);
                     pasientListe.leggTil(pasient);
-                   scanner.nextLine();
+                   scanner.nextLine().split(",");
                 }
                 }
 
             else if ((biter[0].contains("Lege"))){
-               scanner.nextLine();
+               scanner.nextLine().split(",");
                 while(!(biter[0].contains("#"))){
                     String navn = biter[0];
                     int kontrlID = Integer.parseInt(biter[1]);
                 if (kontrlID==0){
                     Lege lege = new Lege(navn);
                     legeListe.leggTil(lege);
-                   scanner.nextLine();
+                   scanner.nextLine().split(",");
                 } else{
                     Lege spesialist = new Spesialist(navn, kontrlID);
                     legeListe.leggTil(spesialist);
-                    scanner.nextLine();
+                    scanner.nextLine().split(",");
                 }
                 }
                 }
 
                 else if (biter[0].contains("Legemidler")){
-               scanner.nextLine();
+               scanner.nextLine().split(",");
                 while(!(biter[0].contains("#"))){
                     String navn = biter[0];
                     String type = biter[1];
@@ -58,24 +58,24 @@ class Legesystem {
                   int styrke=Integer.parseInt(biter[4]);
                     if (type=="narkotisk"){
                         Legemiddel nar = new Narkotisk(navn,pris,virkestoff,styrke);
-                        legemidelListe.leggTil(nar);
-                       scanner.nextLine();
+                        legemiddelListe.leggTil(nar);
+                       scanner.nextLine().split(",");
                     }else{
                         Legemiddel van= new Vanedannende(navn,pris,virkestoff,styrke);
-                        legemidelListe.leggTil(van);
-                       scanner.nextLine();
+                        legemiddelListe.leggTil(van);
+                       scanner.nextLine().split(",");
                     }
                   }
                 else{
                     Legemiddel vanlig = new Vanlig(navn,pris,virkestoff);
-                    legemidelListe.leggTil(vanlig);
-                   scanner.nextLine();
+                    legemiddelListe.leggTil(vanlig);
+                   scanner.nextLine().split(",");
                 }
                 }
-              }  
+              }
             else if (biter[0].contains("Resept")){
-               scanner.nextLine();
-                while(scanner.hasNextLine()){
+               scanner.nextLine().split(",");;
+                while(!(biter[0].contains("#")))
                 int legemnr = Integer.parseInt(biter[0]);
                 String legenavn = biter[1];
                 int pasID = Integer.parseInt(biter[2]);
@@ -86,20 +86,41 @@ class Legesystem {
                 if (type!="p"){
                     int reit = Integer.parseInt(biter[4]);
                     if(type=="hvit"){
+                      try{
                       Resept resept = lege.skrivHvitResept(legemiddel, pasient, reit);
                       reseptListe.leggTil(resept);
+                      scanner.nextLine().split(",");
+
+                      } catch(UlovligUtskrift e){
+                      System.out.println("Funker ikke");
+                     }
                     }
                     else if(type=="blaa"){
+                      try{
                       Resept resept = lege.skrivBlaaResept(legemiddel, pasient, reit);
                       reseptListe.leggTil(resept);
+                      scanner.nextLine().split(",");
+                    } catch(UlovligUtskrift e){
+                    System.out.println("Funker ikke");
+                   }
                     }
                     else if(type=="militaer"){
+                      try{
                       Resept resept = lege.skrivMilitaerResept(legemiddel, pasient, reit);
                       reseptListe.leggTil(resept);
+                      scanner.nextLine().split(",");
+                     } catch(UlovligUtskrift e){
+                     System.out.println("Funker ikke");
+                     }
                     }
                   }else{
+                    try{
                     Resept resept = lege.skrivPResept(legemiddel, pasient);
                     reseptListe.leggTil(resept);
+                    scanner.nextLine().split(",");
+                  } catch(UlovligUtskrift e){
+                  System.out.println("Funker ikke");
+                  }
 
                   }
                 }
@@ -107,27 +128,36 @@ class Legesystem {
             }
           }
 
-            public Legemiddel finnlegemiddel(int legemnr){
-            int teller = 0;
+        public static Legemiddel finnlegemiddel(int legemnr){
+          Legemiddel legemiddel = null;
+          int teller = 0;
             for(Legemiddel l: legemiddelListe){
                 if (teller == legemnr){
-                  return l;
+                  legemiddel = l;
                 }else teller++;
-          }
+          } return legemiddel;
         }
-        public Lege finnLege(String legenavn){
+        public static Lege finnLege(String legenavn){
+          Lege lege = null;
           for(Lege l: legeListe){
             if (l.hentNavn().compareTo(legenavn)==0){
-              return l;
+              lege = l;
             }
-          }
+          } return lege;
         }
-        public Pasient hentPasient(int pasID){
-          for(Pasient p: pasientListe){
+        public static Pasient hentPasient(int pasID){
+          Pasient pasient = null;
+          for (Pasient p: pasientListe){
             if (p.hentID()==pasID){
-              return p;
+              pasient = p;
             }
-          }
+          } return pasient;
         }
+
+
+
+
+
+
 
 }
