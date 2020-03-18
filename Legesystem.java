@@ -98,85 +98,47 @@ class Legesystem {
           String legenavn = info[1];
           int pasID = Integer.parseInt(info[2]);
           String type = info[3];
-          Legemiddel legemiddel = finnlegemiddel(legemnr);
-          Lege lege = finnLege(legenavn);
-          Pasient pasient = hentPasient(pasID);
-
-          if (type != "p") {
-            int reit = Integer.parseInt(info[4]);
-            if (type == "hvit") {
-              try {
-                Resept resept = lege.skrivHvitResept(legemiddel, pasient, reit);
-                reseptListe.leggTil(resept);
-
-              } catch (UlovligUtskrift e) {
-                System.out.println("Funker ikke");
-              }
-            } else if (type == "blaa") {
-              try {
-                Resept resept = lege.skrivBlaaResept(legemiddel, pasient, reit);
-                reseptListe.leggTil(resept);
-              } catch (UlovligUtskrift e) {
-                System.out.println("Funker ikke");
-              }
-            } else if (type == "militaer") {
-              try {
-                Resept resept = lege.skrivMilitaerResept(legemiddel, pasient, reit);
-                reseptListe.leggTil(resept);
-              } catch (UlovligUtskrift e) {
-                System.out.println("Funker ikke");
-              }
-            }
-          } else {
-            try {
-              Resept resept = lege.skrivPResept(legemiddel, pasient);
-              reseptListe.leggTil(resept);
-            } catch (UlovligUtskrift e) {
-              System.out.println("Funker ikke");
-            }
-
-          }
+        Legemiddel legemiddelet = null;
+            for (Legemiddel l : legemiddelListe) {
+              if (legemnr==l.hentId()) {
+                legemiddelet = l;
+                  }
         }
+        Lege lege = null;
+          for (Lege l : legeListe) {
+            if (legenavn.equals(l.hentNavn())) {
+              lege = l;
       }
     }
-  }
-
-  public static Legemiddel finnlegemiddel(int legemnr) {
-    Legemiddel legemiddel = null;
-    int teller = 0;
-    for (Legemiddel l : legemiddelListe) {
-      if (teller == legemnr) {
-        legemiddel = l;
-      } else
-        teller++;
-    }
-    return legemiddel;
-  }
-
-  public static Lege finnLege(String legenavn) {
-    Lege lege = null;
-    for (Lege l : legeListe) {
-      if (l.hentNavn().compareTo(legenavn) == 0) {
-        lege = l;
-      }
-    }
-    return lege;
-  }
-
-  public static Pasient hentPasient(int pasID) {
     Pasient pasient = null;
     for (Pasient p : pasientListe) {
-      if (p.hentID() == pasID) {
+      if (pasID == p.hentID()) {
         pasient = p;
       }
     }
-    return pasient;
-  }
-
-  public void skrivUt() {
-    for (Pasient p : pasientListe) {
-      System.out.println(p.hentID());
+    if (info[3].equals("hvit")){
+      int reit = Integer.parseInt(info[4]);
+      HvitResept hvitResept = lege.skrivHvitResept(legemiddelet, pasient, reit);
+      reseptListe.leggTil(hvitResept);
     }
-  }
+    if (info[3].equals("Militaer")) {
+      int reit = Integer.parseInt(info[4]);
+      MilitaerResept militaerResept = lege.skrivMilitaerResept(legemiddelet, pasient, reit);
+      reseptListe.leggTil(militaerResept);
+    }
+    if (info[3].equals("hvit")) {
+      int reit = Integer.parseInt(info[4]);
+      HvitResept hvitResept = lege.skrivHvitResept(legemiddelet, pasient, reit);
+      reseptListe.leggTil(hvitResept);
+    }
+    if (info[3].equals("p")) {
+      Presept pResept = lege.skrivPResept(legemiddelet, pasient);
+      reseptListe.leggTil(pResept);
+    }
 
+      }
+    }
+  } 
+
+}
 }
