@@ -7,17 +7,18 @@ class Legesystem {
   private static Lenkeliste<Legemiddel> legemiddelListe;
   private static Lenkeliste<Pasient> pasientListe;
 
-  public static void lesFraFil(File fil) {
+  public static void lesFraFil(String filnavn) {
+    File fil = new File(filnavn);
     Scanner scanner = null;
     try {
       scanner = new Scanner(fil);
     } catch (FileNotFoundException e) {
       System.out.println("Fant ikke filen");
-      return;
     }
-    String linje = scanner.nextLine();
+    String linje = "";
 
     while (scanner.hasNextLine()) {
+      linje = scanner.nextLine();
       String[] biter = linje.split(",");
 
       
@@ -72,14 +73,14 @@ class Legesystem {
           if (type.equals("narkotisk") || type.equals("vanedannende")) {
             int styrke = Integer.parseInt(legemidler[4]);
             if (type.equals("narkotisk")) {
-              Legemiddel nar = new Narkotisk(navn, pris, virkestoff, styrke);
+              Narkotisk nar = new Narkotisk(navn, pris, virkestoff, styrke);
               legemiddelListe.leggTil(nar);
             } else {
-              Legemiddel van = new Vanedannende(navn, pris, virkestoff, styrke);
+              Vanedannende van = new Vanedannende(navn, pris, virkestoff, styrke);
               legemiddelListe.leggTil(van);
             }
           } else {
-            Legemiddel vanlig = new Vanlig(navn, pris, virkestoff);
+            Vanlig vanlig = new Vanlig(navn, pris, virkestoff);
             legemiddelListe.leggTil(vanlig);
           }
         }
