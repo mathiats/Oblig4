@@ -1,4 +1,4 @@
-//SortertLenkeliste er en subklasse av Lenkeliste, men tar også inn Comparable.
+//SortertLenkeliste er en subklasse av Lenkeliste, men tar ogsaa inn Comparable.
 class SortertLenkeliste<T extends Comparable<T>> extends Lenkeliste<T>{
 
   @Override
@@ -7,7 +7,7 @@ class SortertLenkeliste<T extends Comparable<T>> extends Lenkeliste<T>{
     if (start == null){
       start = new Node(x);
 
-      //ellers bruker vi compareTo(x) på innholdet til opprinnelige start, og hvis dette er større enn 0,
+      //ellers bruker vi compareTo(x) paa innholdet til opprinnelige start, og hvis dette er større enn 0,
       //blir den nye noden en ny start for lista.
     } else if (start.innhold.compareTo(x) > 0){
       Node node1 = new Node(x);
@@ -16,7 +16,7 @@ class SortertLenkeliste<T extends Comparable<T>> extends Lenkeliste<T>{
       node1.neste = opprinneligForste;
 
     } else {
-      //ellers iterer vi gjennom lista med en while-løkke.
+      //ellers iterer vi gjennom lista med en while-lokke.
       Node node = start;
       //så lenge node.neste ikke er 0 eller at compareTo(x) på node.neste.innhold er mindre eller lik 0.
       while ((node.neste != null) && (node.neste.innhold.compareTo(x) <= 0)){
