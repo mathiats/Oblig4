@@ -1,7 +1,7 @@
 class Vanlig extends Legemiddel{
 
   public Vanlig(String n, double p, double v){
-    super(n,p,v); //Kaller på superklassen sin konstruktør.
+    super(n,p,v); //Kaller paa superklassen sin konstruktor.
   }
 
   @Override
