@@ -41,7 +41,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
     //Oppretter en teller;
     int teller = 0;
     Node forste = start;
-    //En while løkke som kjører så lenge vi ikke har kommet til slutten av lista.
+    //En while lokke som kjorer så lenge vi ikke har kommet til slutten av lista.
     while(forste != null){
       teller++;
       //Oppdaterer forste
@@ -61,7 +61,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
       //sender med -1 som parameter.
       throw new UgyldigListeIndeks(-1);
     }
-    //ellers så fjerner vi første node.
+    //ellers saa fjerner vi forste node.
     T startData = start.innhold;
     Node etterStart = start.neste;
     //endrer start til å være etterStart.
@@ -80,7 +80,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
     if (start == null){
       throw new UgyldigListeIndeks(-1);
     }
-    //kaster også unntak hvis posisjonen er mindre enn 0 eller større enn størrelsen på lista -1.
+    //kaster ogsaa unntak hvis posisjonen er mindre enn 0 eller storre enn storrelsen på lista -1.
     else if(pos < 0 || pos >(stoerrelse()-1)) {
       throw new UgyldigListeIndeks(pos);
     }
@@ -94,14 +94,14 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
       return returverdi;
     }
     else{
-      //ellers så iterer vi gjennom lista, til vi kommer til noden som er før den som skal fjernes.
+      //ellers saa iterer vi gjennom lista, til vi kommer til noden som er for den som skal fjernes.
       Node forsteNode = start;
       for (int i = 0; i < (pos-1); i++){
         forsteNode = forsteNode.neste;
       }
       Node skalFjernes = forsteNode.neste;
       T returVerdi = skalFjernes.innhold;
-      //Noden etter den som skal fjernes blir definert, så vi kan hoppe over den som skal fjernes.
+      //Noden etter den som skal fjernes blir definert, saa vi kan hoppe over den som skal fjernes.
       Node etterSkalFjernes = skalFjernes.neste;
       forsteNode.neste = etterSkalFjernes;
       //returnerer innholdet til noden som fjernes.
@@ -143,7 +143,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
         throw new UgyldigListeIndeks(pos);
       }
     }
-    // ellers hvis posisjonen er lik størrelsen på lista, vil vi kunne legge den bakerst.
+    // ellers hvis posisjonen er lik storrelsen på lista, vil vi kunne legge den bakerst.
     //bruker samme metode som i leggTil(T x).
     else if(pos == stoerrelse()){
       Node forste = start;
@@ -152,17 +152,17 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
       }
       forste.neste = new Node(x);
     }
-    //Hvis posisjonen er under 0 eller større en størrelsen, blir et nytt unntak kastet.
+    //Hvis posisjonen er under 0 eller storre en storrelsen, blir et nytt unntak kastet.
     else if((pos < 0)|| (pos > stoerrelse())){
       throw new UgyldigListeIndeks(pos);
     }
-    //hvis posisjonen er 0, blir dette den nye start, og alt blir forskjøvet.
+    //hvis posisjonen er 0, blir dette den nye start, og alt blir forskjovet.
     else if(pos == 0){
       Node opprinneligStart = start;
       start = new Node(x);
       start.neste = opprinneligStart;
     }
-    //ellers iterer vi fram til noden før der det skal legges til en ny node.
+    //ellers iterer vi fram til noden for der det skal legges til en ny node.
     else {
       Node forste = start;
       for(int i = 0; i < (pos-1); i++){
@@ -178,16 +178,16 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
 
   @Override
   public T hent(int pos)throws UgyldigListeIndeks{
-    //Hvis posisjonen er mindre enn 0 eller at posisjonen er større en stoerrelse() -1.
+    //Hvis posisjonen er mindre enn 0 eller at posisjonen er storre en stoerrelse() -1.
     if((pos < 0) || (pos > (stoerrelse()-1))) {
       //kastes et nytt unntak.
       throw new UgyldigListeIndeks(pos);
-      //Hvis posisjonen er 0, så returneres innholdet til start.
+      //Hvis posisjonen er 0, saa returneres innholdet til start.
     } else if(pos == 0){
       return start.innhold;
 
     } else {
-    //Ellers iterer vi gjennom lista fram til posisjonen vi ønsker.
+    //Ellers iterer vi gjennom lista fram til posisjonen vi onsker.
     Node forste = start;
     for(int i = 0; i < pos; i++){
       forste = forste.neste;
@@ -210,11 +210,11 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
     else if(pos == 0){
       start.innhold = x;
     }
-    //hvis posisjonen er under 0 eller større enn stoerrelse()-1, blir det kastet et nytt unntak.
+    //hvis posisjonen er under 0 eller storre enn stoerrelse()-1, blir det kastet et nytt unntak.
     else if((pos < 0)||(pos >(stoerrelse()-1))){
       throw new UgyldigListeIndeks(pos);
     }
-    // eller iterer vi fram til riktig node, og setter innholdet til å være x.
+    // eller iterer vi fram til riktig node, og setter innholdet til å vaere x.
     else {
       Node node = start;
       for (int i = 0; i < pos; i++){
