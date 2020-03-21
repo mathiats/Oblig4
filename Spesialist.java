@@ -5,7 +5,7 @@ class Spesialist extends Lege implements Godkjenningsfritak {
 
 
   public Spesialist(String navnP,int kontrollIDP){
-    super(navnP); //Bruker lege sin konstruktør for navn.
+    super(navnP); //Bruker lege sin konstruktor for navn.
     kontrollID = kontrollIDP;
   }
 
@@ -15,7 +15,7 @@ class Spesialist extends Lege implements Godkjenningsfritak {
   }
 
   @Override
-  public String toString(){ // Kaller på Lege sin toString, legger til info om kontrollID. 
+  public String toString(){ // Kaller paa Lege sin toString, legger til info om kontrollID. 
     return (super.toString() +"\n" +  "KontrollID til Spesialisten: " + kontrollID);
   }
 
