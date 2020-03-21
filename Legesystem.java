@@ -19,7 +19,7 @@ class Legesystem {
 
     scanner.nextLine();
 
-
+  while(scanner.hasNextLine()){
     String[] biterPasient = scanner.nextLine().split(",");
 
     while (biterPasient[0].charAt(0) != '#'){
@@ -143,7 +143,7 @@ class Legesystem {
 
    }
   }
-
+}
 
 
 
