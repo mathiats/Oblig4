@@ -8,7 +8,7 @@ abstract class Resept{
     protected int reit;
 
     public Resept(Legemiddel legemiddelP,Lege utskrivendeLegeP,Pasient pasientP,int reitP){
-      //Oppretter en konstruktør som tar inn 4 parametre, Legemiddel,Lege,pasientId og reit.
+      //Oppretter en konstruktor som tar inn 4 parametre, Legemiddel,Lege,pasientId og reit.
       legemiddel = legemiddelP;
       utskrivendeLege = utskrivendeLegeP;
       pasient = pasientP;
@@ -48,14 +48,14 @@ abstract class Resept{
 
 
       public boolean bruk(){
-        reit--;  //Reiten blir 1 mindre når man bruker en resept.
+        reit--;  //Reiten blir 1 mindre naar man bruker en resept.
         if (reit < 0){
           return false; //returner false hvis resepten er ugyldig.
         }
         return true;
       }
 
-      @Override //Overider fra Object, returnerer all info som er nødvendig.
+      @Override //Overider fra Object, returnerer all info som er nodvendig.
       public String toString(){
         return ("\nType legemiddel: " + legemiddel.hentNavn() + "\n"
              + "Utskrivende lege: " + utskrivendeLege.hentNavn() + "\n"
@@ -65,7 +65,7 @@ abstract class Resept{
       }
 
 
-      abstract public String farge(); //Oppretter 2 abstrakte metoder, som tvinger oss til å overskrive
+      abstract public String farge(); //Oppretter 2 abstrakte metoder, som tvinger oss til aa overskrive
     // i subklassene. Blir som en ekstra sjekk for meg selv.
       abstract public double prisAaBetale();
 
