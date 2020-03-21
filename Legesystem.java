@@ -126,12 +126,14 @@ class Legesystem {
           MilitaerResept militaerResept = lege.skrivMilitaerResept(legemiddelet, pasient, reit);
           reseptListe.leggTil(militaerResept);
         } catch(UlovligUtskrift e){}
+        
         } else if (type.equals("hvit")) {
           try{
           int reit = Integer.parseInt(info[4]);
           HvitResept hvitResept = lege.skrivHvitResept(legemiddelet, pasient, reit);
           reseptListe.leggTil(hvitResept);
         } catch(UlovligUtskrift e){}
+        
       } else if (type.equals("p")) {
           try{
           Presept pResept = lege.skrivPResept(legemiddelet, pasient);
