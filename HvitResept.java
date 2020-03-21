@@ -4,7 +4,7 @@ public class HvitResept extends Resept{
 
 
     public HvitResept(Legemiddel l,Lege u,Pasient p,int r){
-      super(l,u,p,r); //Kaller på konstruktøren til superklassen, Resept.
+      super(l,u,p,r); //Kaller paa konstruktoren til superklassen, Resept.
       farge = "Hvit";
     }
 
@@ -22,7 +22,7 @@ public class HvitResept extends Resept{
 
     @Override //Overskriver toString
     public String toString(){
-      return (super.toString() + "\nFarge: " + farge + "\n"  // Kaller på konstruktøren, og legger til
+      return (super.toString() + "\nFarge: " + farge + "\n"  // Kaller paa konstruktoren, og legger til
              + "Pris: " + prisAaBetale() ) ;    // Informasjon til informasjon om HvitResept.
     }
 
