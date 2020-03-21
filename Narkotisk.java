@@ -3,7 +3,7 @@ class Narkotisk extends Legemiddel{
     protected int narkStyrke; //Narkotisk har instansvariablen narkStyrke.
 
     public Narkotisk(String n, double p, double v, int nStyrke){
-      super(n,p,v); //Kaller på super sin konstruktør.
+      super(n,p,v); //Kaller paa super sin konstruktor.
       narkStyrke = nStyrke;
     }
 
