@@ -1,7 +1,7 @@
 class MilitaerResept extends HvitResept {
 
   public MilitaerResept(Legemiddel l,Lege u,Pasient p,int r){
-    super(l,u,p,r); //Kaller på konstruktøren til Superklassen.
+    super(l,u,p,r); //Kaller på konstruktoren til Superklassen.
    }
 
 
