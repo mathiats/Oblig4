@@ -10,28 +10,30 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
     }
   }
 
-  public Iterator<T> iterator(){
-    return new LenkelisteIterator();
+  @Override
+  public Iterator iterator(){
+    return (new LenkelisteIterator(this));
   }
 
   class LenkelisteIterator implements Iterator<T> {
-    Node denne = start;
+    private Liste<T> liste;
+    private int teller;
 
+    public LenkelisteIterator(Liste<T> l){
+      liste = l;
+      teller = 0;
+    }
 
+    @Override
     public boolean hasNext(){
-      return denne != null;
+      return (teller < liste.stoerrelse());
     }
 
+    @Override
     public T next(){
-      if (denne == null){
-        throw new NoSuchElementException("next");
-      }
-      Node n = denne;
-      denne = denne.neste;
-      return n.innhold;
-
-    }
+      return (liste.hent(teller++));
   }
+}
 
   //Den lenkede listen har en instansvariabel start; som settes til null.
   Node start = null;
@@ -61,7 +63,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
       //sender med -1 som parameter.
       throw new UgyldigListeIndeks(-1);
     }
-    //ellers saa fjerner vi forste node.
+    //ellers så fjerner vi første node.
     T startData = start.innhold;
     Node etterStart = start.neste;
     //endrer start til å være etterStart.
@@ -86,7 +88,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
     }
     //sjekker hvis posisjonen er lik 0.
     else if (pos == 0){
-      //da oppretter vi en ny første node, og forflytter nodene bakover.
+      //da oppretter vi en ny forste node, og forflytter nodene bakover.
       T returverdi = start.innhold;
       Node andreNode = start.neste;
       start = andreNode;
@@ -227,3 +229,4 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
 
 
 }
+
