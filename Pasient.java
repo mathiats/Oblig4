@@ -20,4 +20,7 @@ class Pasient{
   public int hentID(){
     return unikID;
   }
+    public String hentNavn(){
+    return navn;
+  }
 }
