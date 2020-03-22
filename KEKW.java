@@ -1,4 +1,4 @@
-import java.io.*;
+mport java.io.*;
 import java.util.*;
 
 class Legesystem {
@@ -147,11 +147,6 @@ class Legesystem {
 }
 }
 
-  public void skrivLeger(){
-    for (Lege l: legeListe){
-      System.out.println(l);
-    }
-  }
 
 
 
@@ -163,32 +158,60 @@ class Legesystem {
 
 
 
-/*public static void brukerInput(){
-  String svar = null;
-  while(svar != "avslutt"){
+
+public static void brukerInput(){
+  int svar = 15;
+  while(svar != 5){
     Scanner input = new Scanner(System.in);
-    System.out.println("Skriv ut informasjon om:\n0: Pasienter\n1: Leger\n2: Legemiddel\n3: Resept\n4: Avslutt");
-    String svar = input.nextLine();
-    if(svar== "Pasienter"){
+    System.out.println("Skriv ut informasjon om:\n0: Pasienter\n1: Leger\n2: Legemiddel\n3: Resept\n4: Ønsker du å legge til et objekt, tast 4\n5:T ast 5 for å avslutte");
+    svar = input.nextInt();
+    if(svar== 0){
+      System.out.println("Skriver ut informasjon om pasienter:");
       for(Pasient p : pasientListe){
-        System.out.println(p.hentNavn(), p.hentID(), p.hentfodsNummer());
+        System.out.println(p);
+        System.out.println();
+
+      }
+
+
+
+    }
+    else if (svar == 1){
+      System.out.println("Skriver ut informasjon om Leger:");
+      for(Lege l: legeListe){
+        System.out.println(l.hentNavn());
         System.out.println();
       }
     }
-    else if (svar == "Leger"){
-      for(Lege l: legeListe){
-        System.out.println(l.hentNavn());
-      }
-    }
-    else if(svar == "Legemiddel"){
+    else if(svar == 2){
+      System.out.println("Skriver ut informasjon om legemiddel:");
       for(Legemiddel l: legemiddelListe){
         System.out.println(l.toString());
         System.out.println();
       }
     }
-  }*/
+    else if(svar ==3){
+      System.out.println("Skriver ut informasjon om resept:");
+      for(Resept r: reseptListe){
+        System.out.println(r.toString());
+        System.out.println();
+    }
+  }
+  else if (svar==4){
+    Scanner inputet = new Scanner(System.in);
+    System.out.println("Hilken type objekt onsker du aa legge til? Pasient/Lege/Legemiddel");
+    String svaret = inputet.nextLine();
+    if (svaret.equals("Pasient")){
+      System.out.println("Skriv navnet: ");
+      String navn = inputet.nextLine();
+      System.out.println("Skriv fodselsnummer: ");
+      String fodselsnummer = inputet.nextLine();
+      
+    }
+  }
+}
 
-
+}
 
 
 
