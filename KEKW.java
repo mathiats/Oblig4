@@ -1,5 +1,13 @@
+import java.io.*;
+import java.util.*;
 
-  public static void lesFraFil(File fil) {
+class Legesystem {
+   static SortertLenkeliste<Lege> legeListe = new SortertLenkeliste<Lege>();
+   static Lenkeliste<Resept> reseptListe = new Lenkeliste<Resept>();
+   static Lenkeliste<Legemiddel> legemiddelListe = new Lenkeliste<Legemiddel>();
+   static Lenkeliste<Pasient> pasientListe = new Lenkeliste<Pasient>();
+
+   public static void lesFraFil(File fil) {
     Scanner scanner = null;
     try {
       scanner = new Scanner(fil);
@@ -118,14 +126,14 @@
           MilitaerResept militaerResept = lege.skrivMilitaerResept(legemiddelet, pasient, reit);
           reseptListe.leggTil(militaerResept);
         } catch(UlovligUtskrift e){}
-        
+
         } else if (type.equals("hvit")) {
           try{
           int reit = Integer.parseInt(info[4]);
           HvitResept hvitResept = lege.skrivHvitResept(legemiddelet, pasient, reit);
           reseptListe.leggTil(hvitResept);
         } catch(UlovligUtskrift e){}
-        
+
       } else if (type.equals("p")) {
           try{
           Presept pResept = lege.skrivPResept(legemiddelet, pasient);
@@ -134,8 +142,23 @@
     }
 
    }
-  }
+
+
 }
+}
+
+  public void skrivLeger(){
+    for (Lege l: legeListe){
+      System.out.println(l);
+    }
+  }
+
+
+
+
+
+
+
 
 
 
@@ -146,7 +169,6 @@
     Scanner input = new Scanner(System.in);
     System.out.println("Skriv ut informasjon om:\n0: Pasienter\n1: Leger\n2: Legemiddel\n3: Resept\n4: Avslutt");
     String svar = input.nextLine();
-
     if(svar== "Pasienter"){
       for(Pasient p : pasientListe){
         System.out.println(p.hentNavn(), p.hentID(), p.hentfodsNummer());
@@ -166,5 +188,10 @@
     }
   }*/
 
+
+
+
+
 }
 
+  
