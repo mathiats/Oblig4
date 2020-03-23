@@ -1,4 +1,4 @@
-public void brukerInput(){
+  public void brukerInput(){
     int svar = 10;
     while (svar != 6){
       Scanner input = new Scanner(System.in);
@@ -206,3 +206,4 @@ public void brukerInput(){
         }
       }
     }
+  }
