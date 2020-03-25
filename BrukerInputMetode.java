@@ -172,7 +172,7 @@
               HvitResept hvitResept = lege.skrivHvitResept(legeM, pasient, reit);
               reseptListe.leggTil(hvitResept);
               continue;
-            } catch (UlovligUtskrift e){
+            } catch (NumberFormatException e){
             }
           }
           else if (type.equals("militaer")){
@@ -182,7 +182,7 @@
               MilitaerResept mili = lege.skrivMilitaerResept(legeM, pasient, reit);
               reseptListe.leggTil(mili);
               continue;
-            } catch (UlovligUtskrift e){
+            } catch (NumberFormatException e){
             }
           }
           else if (type.equals("blaa")){
@@ -192,7 +192,7 @@
               BlaaResept blaaResept = lege.skrivBlaaResept(legeM, pasient, reit);
               reseptListe.leggTil(blaaResept);
               continue;
-            } catch (UlovligUtskrift e){
+            } catch (NumberFormatException e){
             }
           }
           else if (type.equals("p")){
