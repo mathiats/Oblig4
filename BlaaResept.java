@@ -2,7 +2,7 @@ class BlaaResept extends Resept{
       protected String farge; //BlaaResept har en instansvariabel; farge
 
       public BlaaResept(Legemiddel l,Lege u,Pasient p,int r){
-        super(l,u,p,r); //Kaller paa konstruktoren til superklassen.
+        super(l,u,p,r); //Kaller paa konstruktøren til superklassen.
         farge = "Blaa";
       }
 

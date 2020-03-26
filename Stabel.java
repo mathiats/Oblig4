@@ -1,7 +1,7 @@
 //Stabel er en subklasse av Lenkeliste.
 class Stabel<T> extends Lenkeliste<T> {
 
-  //bruker leggTil(x) for aa legge til slutten av lista.
+  //bruker leggTil(x) for å legge til slutten av lista.
   public void leggPaa(T x){
     leggTil(x);
   }

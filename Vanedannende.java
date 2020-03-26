@@ -1,11 +1,13 @@
 class Vanedannende extends Legemiddel{
-  protected int vStyrke; //Vanedannende er en subklasse til Legemiddel, men har ogsaa instansvariablen vStyrke.
+  protected int vStyrke; //Vanedannende er en subklasse til Legemiddel, men har også instansvariablen vStyrke.
 
   public Vanedannende(String n, double p, double v, int styrke){
-    super(n,p,v); //Kaller paa superklassen sin konstruktor, med de ulike parametrene fra konstruktoren.
+    super(n,p,v); //Kaller på superklassen sin konstruktør, med de ulike parametrene fra konstruktøren.
     vStyrke = styrke;
   }
-  public int hentVanedannendeStyrke(){ // returnerer vStyrke.
+
+  @Override
+  public int styrke(){ // returnerer vStyrke.
     return vStyrke;
   }
   @Override

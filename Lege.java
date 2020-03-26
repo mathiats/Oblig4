@@ -1,18 +1,24 @@
 class Lege implements Comparable<Lege> {
 
   protected String navn; // Klassen lege har instansvariabelen navn.
-  protected Lenkeliste<Resept> utskrevedeResepter;
+  protected Lenkeliste<Resept> utskrevedeResepter = new Lenkeliste<Resept>();
 
   public Lege(String navnP){
     navn = navnP;
   }
 
-  public Lenkeliste<Resept> utskrevedeListe(){
+  public int hentKontrollID(){
+    return 0;
+  }
+
+  public Lenkeliste<Resept> hentUtskrevedeResepter(){
     return utskrevedeResepter;
+
+
   }
 
 
-  public String hentNavn(){ //Metoden returnerer navnet til Legen.
+  public String hentNavnLege(){ //Metoden returnerer navnet til Legen.
     return navn;
   }
 
@@ -23,7 +29,7 @@ class Lege implements Comparable<Lege> {
 
 
   public int compareTo(Lege annen){
-    return navn.compareTo(annen.hentNavn());
+    return navn.compareTo(annen.navn);
   }
 
   public HvitResept skrivHvitResept(Legemiddel legemiddel, Pasient pasientID, int reit) throws UlovligUtskrift{

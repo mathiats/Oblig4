@@ -6,7 +6,7 @@ abstract class Legemiddel {
     protected static int idTeller = 0;
     protected int idNummer;
 
-    public Legemiddel(String n, double p, double v){   //Konstruktoren tar inn 3 parametre.
+    public Legemiddel(String n, double p, double v){   //Konstruktøren tar inn 3 parametre.
       navn = n;
       pris = p;
       virkestoff = v;
@@ -31,7 +31,7 @@ abstract class Legemiddel {
       return virkestoff;
     }
 
-    public void settNyPris(double nyPris){ //Denne metoden setter en ny pris på legemiddelet. 
+    public void settNyPris(double nyPris){ //Denne metoden setter en ny pris på legemiddelet.
       pris = nyPris;
     }
 
@@ -40,6 +40,8 @@ abstract class Legemiddel {
       return ("\nNavn: "+ navn + "\n" +  "Pris: " + pris + "\n"
       + "Virkestoff: " + virkestoff + "\n" + "Idnummer: " + idNummer);
     }
+
+    abstract public int styrke();
 
 
 

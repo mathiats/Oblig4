@@ -1,4 +1,4 @@
-import java.util.NoSuchElementException;
+
 import java.util.Iterator;
 
 class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T>
@@ -11,7 +11,7 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
   }
 
   @Override
-  public Iterator iterator(){
+  public Iterator<T> iterator(){
     return (new LenkelisteIterator(this));
   }
 
@@ -229,4 +229,3 @@ class Lenkeliste<T> implements Liste<T> { //Lenkeliste implementerer fra Liste<T
 
 
 }
-
